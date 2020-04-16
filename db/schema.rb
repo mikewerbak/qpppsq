@@ -48,10 +48,14 @@ ActiveRecord::Schema.define(version: 2020_04_12_191835) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "bilings", force: :cascade do |t|
+  create_table "billings", force: :cascade do |t|
     t.string "bill"
+    t.bigint "account_id"
+    t.bigint "bank_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_billings_on_account_id"
+    t.index ["bank_id"], name: "index_billings_on_bank_id"
   end
 
   create_table "products", force: :cascade do |t|
