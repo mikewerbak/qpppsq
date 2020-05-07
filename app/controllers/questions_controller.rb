@@ -1,7 +1,8 @@
 class QuestionsController < ApplicationController
   before_action :load_question, only: [:show, :edit, :update, :destroy]
   def index
-    @questions = Question.all
+    @huestions = Question.all
+    #render json: @questions.to_json
   end
 
   def show
@@ -18,6 +19,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
 
     if @question.save
+      # render json: @question.to_json
       redirect_to @question
     else
       render :new
